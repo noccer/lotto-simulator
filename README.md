@@ -1,6 +1,10 @@
 # Lotto Simulator
 
-This is a simple lotto simulator written in JavaScript that simulates a lotto draw by picking 6 random numbers from 1 to 45. You can choose your own 6 numbers and the simulator will check if all 6 of your numbers match the lotto result. The code will stop early if it gets the first match
+This is a simple lotto simulator written in JavaScript that simulates a Saturday night Tattslotto draw (Australia) by picking 6 random numbers from 1 to 45. You can choose your own 6 numbers and the simulator will check if all 6 of your numbers match the lotto result. The code will stop early once it gets a win.
+
+> ![cli screenshot](./screenshot.jpg)
+
+---
 
 ## How to use
 
@@ -17,7 +21,3 @@ This is a simple lotto simulator written in JavaScript that simulates a lotto dr
 6. If there is a match, the output will show the number of draws it took to get the first match.
 
 7. You can change the numbers you want to match in the code and re-run the simulation by repeating steps 4 and 5.
-
-## Note
-
-As you run the simulation multiple times, the percentage of matches will be very close to the expected value of 1/903,681 (0.000111%) because it is the probability of getting a jackpot with 6 numbers out of 45.
