@@ -1,3 +1,5 @@
+const totalNumbersInDraw = 45;
+
 // function to simulate a lotto draw
 function lottoDraw() {
   // create an array to store the randomly picked numbers
@@ -5,7 +7,7 @@ function lottoDraw() {
 
   // use a while loop to pick 6 random numbers from 1 to 45
   while (drawNumbers.length < 6) {
-    let number = Math.floor(Math.random() * 45) + 1;
+    let number = Math.floor(Math.random() * totalNumbersInDraw) + 1;
     if (!drawNumbers.includes(number)) {
       drawNumbers.push(number);
     }
@@ -39,22 +41,42 @@ function checkNumbers(chosenNumbers, drawNumbers) {
 
 // example usage:
 let myNumbers = [1, 2, 3, 4, 5, 6];
-let matches = 0;
+let wins = 0;
 let totalDrawsMade = 0;
-let totalDraws = 100000000;
+let totalDrawAttempts = 100000000;
 
-for (let i = 0; i < totalDraws; i++) {
+console.log(
+  `Let\'s play Saturday night TattsLotto in Australia with these numbers: [${myNumbers.join(
+    ", "
+  )}]`
+);
+console.log(
+  "Total Draws to be attempted: " + totalDrawAttempts.toLocaleString()
+);
+console.log(
+  `To win the lotto, you need to match all 6 numbers out of ${totalNumbersInDraw} numbers`
+);
+console.log("Let's see how long it takes to win the lotto...");
+console.log("--------------------------------------------------");
+
+for (let i = 0; i < totalDrawAttempts; i++) {
   let draw = lottoDraw();
   totalDrawsMade++;
+  if (totalDrawsMade % 500000 === 0) {
+    console.log("Total Draws so far: " + totalDrawsMade.toLocaleString());
+  }
   if (checkNumbers(myNumbers, draw)) {
-    matches++;
-    if (matches === 1) {
-      console.log('Matched after ' + i + ' draws');
+    wins++;
+    if (wins === 1) {
+      console.log(
+        `Won the lotto after ${totalDrawsMade.toLocaleString()} attempts!`
+      );
       break;
     }
   }
 }
-console.log('Total Matches: ' + matches);
-// console.log('Total Draws: ' + totalDraws);
-console.log('Total Years: ' + Math.floor(totalDrawsMade / (365.25 / 7)));
-console.log('Percentage of Matches: ' + (matches / totalDraws) * 100 + '%');
+console.log(
+  `If each draw was made weekly, it would have taken you ${Math.floor(
+    totalDrawsMade / (365.25 / 7)
+  ).toLocaleString()} years to win.`
+);
